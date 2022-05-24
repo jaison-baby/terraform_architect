@@ -1,0 +1,20 @@
+This architect designed in standalone VPC and Security Group
+
+
+
+Here two s3 bucket using one for media and for static files
+
+
+This two s3 bucket uses a custom domain name using cloud front and the module "CF-1" for static bucket and module "CF" for media bucket. 
+
+
+The custom domains are static.terraformcloudfront.tk(static s3 bucket) and media.terraformcloudfront.tk(media s3 bucket)  which is using the modules "ACM"
+ and the certificates are issued in us-east-1.
+ 
+ 
+ Load balancer using the domain name as lb.terraformcloudfront.tk and its module is "ACM-2"
+ 
+ terraform.tfvars file using the security group and assigned variables for each application for redis,load balancer,elastic search,acm,s3 bucket and RDS.
+
+
+load balancer target group attached to Autoscaling and alarm set in cloudwatch for scale up and scale down policies.
